@@ -14,15 +14,15 @@ Our team had been using a in house fork of Cocoapods with svn, bzr, and hg spec-
 
 Add
 
-    $ pod repo-hg add my-hg-repo hg-repo-url
+    $ pod repo-hg add NAME REPO
   
 Update
 
-    $ pod repo-hg update my-hg-repo
+    $ pod repo-hg update NAME
 
 Remove
 
-    $ pod repo-hg remove my-hg-repo
+    $ pod repo-hg remove NAME
 
     
 ## Contributing
