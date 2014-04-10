@@ -8,13 +8,13 @@ Our team had been using a in house fork of Cocoapods with svn, bzr, and hg spec-
 
 ## Installation
 
-    $ gem install cocoapods-repo-svn 
+    $ gem install cocoapods-repo-hg
 
 ## Usage
 
 Add
 
-    $ pod repo-hg add my-hg-repo http://svn-repo-url
+    $ pod repo-hg add my-hg-repo hg-repo-url
   
 Update
 
