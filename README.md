@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/cocoapods-repo-hg.svg)](http://badge.fury.io/rb/cocoapods-repo-hg)
+
 # Cocoapods::RepoHg
 
 Adds mercurial support to manage spec-repositories
