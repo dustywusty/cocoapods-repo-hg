@@ -1,4 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/cocoapods-repo-hg.svg)](http://badge.fury.io/rb/cocoapods-repo-hg)
+[![Code Climate](https://codeclimate.com/github/clarkda/cocoapods-repo-hg/badges/gpa.svg)](https://codeclimate.com/github/clarkda/cocoapods-repo-hg)
 
 # Cocoapods::RepoHg
 
