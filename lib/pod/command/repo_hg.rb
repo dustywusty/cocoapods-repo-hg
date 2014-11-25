@@ -111,6 +111,23 @@ module Pod
           end
         end
 
+        # @return [Source] The hg source with the given name. If no hg source
+        #         with given name is found it raises.
+        #
+        # @param  [String] name
+        #         The name of the source.
+        #
+        def hg_source_named(name)
+          specified_source = SourcesManager.aggregate.sources.find { |s| s.name == name }
+          unless specified_source
+            raise Informative, "Unable to find the `#{name}` repo."
+          end
+          unless hg_repo?(specified_source.repo)
+            raise Informative, "The `#{name}` repo is not a hg repo."
+          end
+          specified_source
+        end
+
         # @return [Source] The list of the hg sources.
         #
         def hg_sources
