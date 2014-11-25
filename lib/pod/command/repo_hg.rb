@@ -111,6 +111,14 @@ module Pod
           end
         end
 
+        # @return [Source] The list of the hg sources.
+        #
+        def hg_sources
+          SourcesManager.all.select do |source|
+            hg_repo?(source.repo)
+          end
+        end
+
         # Returns whether a source is a HG repo.
         #
         # @param  [Pathname] dir
