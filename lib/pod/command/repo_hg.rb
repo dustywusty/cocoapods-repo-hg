@@ -94,19 +94,24 @@ module Pod
         #
         def update(source_name = nil, show_output = false)
           if source_name
-            specified_source = SourcesManager.aggregate.all.find { |s| s.name == source_name }
-            raise Informative, "Unable to find the `#{source_name}` spec-repo."    unless specified_source
-            raise Informative, "The `#{source_name}` repo is not a hg spec-repo." unless hg_repo?(specified_source.data_provider.repo)
-            sources = [specified_source]
+            sources = [hg_source_named(source_name)]
+          else
+            sources =  hg_sources
           end
-
           sources.each do |source|
-            UI.section "Updating spec-repo `#{source.name}`" do
-              Dir.chdir(source.data_provider.repo) do
-                output = hg!('pull')
-                UI.puts output if show_output && !config.verbose?
+            UI.section "Updating spec repo `#{source.name}`" do
+              Dir.chdir(source.repo) do
+                begin
+                  output = hg!('pull')
+                  UI.puts output if show_output && !config.verbose?
+                rescue Informative => e
+                  UI.warn 'CocoaPods was not able to update the ' \
+                  "`#{source.name}` repo. If this is an unexpected issue " \
+                  'and persists you can inspect it running ' \
+                  '`pod repo-hg update --verbose`'
+                end
               end
-              SourcesManager.check_version_information(source.data_provider.repo) #todo: test me
+              SourcesManager.check_version_information(source.repo)
             end
           end
         end
